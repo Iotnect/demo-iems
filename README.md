@@ -95,7 +95,30 @@ This shared account is defined in `app/Http/Controllers/LoginController.php`. It
 6. Export filtered observations from Environmental Monitoring or prepare a report from Reports & Insights.
 7. Adjust draft settings in Administration and sign out when finished.
 
-Reviews and draft settings belong to the current browser session and are cleared on sign-out. Threshold changes do not recalculate the fixed sample anomaly register.
+Reviews and draft settings belong to the current session and are cleared on sign-out. Threshold changes do not recalculate the fixed sample anomaly register.
+
+## Deploy the demo to Vercel
+
+The repository includes a Vercel configuration using the [community PHP runtime](https://github.com/vercel-community/php) pinned to PHP 8.3. It builds Laravel as a function and publishes a separate static bundle containing only frontend assets and map imagery.
+
+1. Import this repository into Vercel and select the `main` branch.
+2. Set **Application Preset / Framework Preset** to **Other** and keep **Root Directory** at `./`.
+3. Leave build and output overrides disabled. The `builds` configuration in `vercel.json` controls both PHP and frontend builds.
+4. Select **Node.js 22.x** in the project settings if prompted; this version is also declared in `package.json`.
+5. Generate a dedicated application key locally:
+
+   ```sh
+   php artisan key:generate --show --no-interaction
+   ```
+
+6. Add the complete generated value, including the `base64:` prefix, as the Vercel environment variable **APP_KEY**. Enable it for Production and Preview. Keep this key stable across redeployments and out of Git.
+7. Click **Deploy**. After deployment, set **APP_URL** to the assigned application address and redeploy if you need console-generated URLs.
+
+Other demo environment settings are supplied by `vercel.json`: production mode, disabled debug output, secure cookie sessions, temporary file cache, synchronous queues, and logs sent to stderr. A database is not required for this deployment.
+
+The Vercel entrypoint creates writable Laravel directories in temporary storage and trusts the platform's forwarded protocol headers for HTTPS links. Cookie sessions keep demo login and short reviews available across function invocations; browser cookie size limits make this suitable for small demonstration sessions. Use an external session store for larger reviews. The temporary file cache, including login throttling counters, is local to each function instance and can reset on a cold start.
+
+The build runs frontend compilation in both builders so the PHP function has its Vite manifest and the static deployment has matching assets. PHP source files and local environment files are excluded from the static output.
 
 ## Development commands
 

@@ -1,0 +1,36 @@
+{
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "version": 2,
+    "builds": [
+        {
+            "src": "public/vercel.php",
+            "use": "vercel-php@0.7.4"
+        },
+        {
+            "src": "package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "public/vercel-static"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "handle": "filesystem"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/public/vercel.php"
+        }
+    ],
+    "env": {
+        "APP_NAME": "IEMS",
+        "APP_ENV": "production",
+        "APP_DEBUG": "false",
+        "LOG_CHANNEL": "stderr",
+        "SESSION_DRIVER": "cookie",
+        "SESSION_SECURE_COOKIE": "true",
+        "CACHE_STORE": "file",
+        "QUEUE_CONNECTION": "sync"
+    }
+}
