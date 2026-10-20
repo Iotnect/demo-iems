@@ -1,58 +1,144 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# IEMS — Integrated Environmental Monitoring System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Laravel web application demonstrating a Phase 1 environmental monitoring workspace for PETRONAS. It brings methane, air quality, and water quality observations together with geographic context, historical baselines, anomaly reviews, and reports.
 
-## About Laravel
+The application uses illustrative data for two Malaysian areas of interest: Coastal Industrial in Pengerang, Johor, and River Catchment in Kota Tinggi, Johor. There is no live satellite, drone, IoT, or AI ingestion.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+| Workspace | Capabilities |
+| --- | --- |
+| Environmental Overview | Summary metrics, observation trends, geographic context, and anomaly highlights. |
+| Areas of Interest | Explore the two demonstration areas and their monitoring scope. |
+| Environmental Monitoring | Filter observations by area, parameter, and date range; export observations as CSV. |
+| Historical Baseline | Compare observations against seasonal and annual reference values. |
+| Alerts & Anomalies | Filter findings by severity and status; save review statuses and analyst notes. |
+| Reports & Insights | Prepare report views and use the browser's Print / Save PDF option. |
+| PoC Evaluation & Roadmap | Review the demonstration assessment and proposed future capabilities. |
+| Administration | Save draft monitoring thresholds, frequency, and baseline settings for the current session. |
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+The interface includes responsive navigation, map layer controls, date selection, and a session-based demo login.
 
-## Learning Laravel
+## Technology
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- PHP 8.3 or later and Laravel 13.
+- Blade templates, Tailwind CSS 4, custom CSS, and vanilla JavaScript.
+- Vite 8 for frontend development and asset builds.
+- SQLite by default, including database-backed sessions, cache, and queue storage.
+- PHPUnit 12 for automated tests.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Requirements
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+- PHP 8.3+ with the extensions required by Composer, including PDO SQLite for the default database.
+- Composer 2.
+- Node.js 22.12+ and npm.
+- Git.
 
-## Agentic Development
+## Local installation
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+Clone the repository and install the locked dependencies:
 
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+```sh
+git clone https://github.com/Iotnect/demo-iems.git
+cd demo-iems
+composer install
+npm ci --ignore-scripts
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Create the local environment file, application key, and SQLite database:
 
-## Contributing
+```sh
+php -r "file_exists('.env') || copy('.env.example', '.env');"
+php artisan key:generate --no-interaction
+php -r "file_exists('database/database.sqlite') || touch('database/database.sqlite');"
+php artisan migrate --no-interaction
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+The supplied `.env.example` selects SQLite and database-backed sessions and cache. Keep those defaults for the demo. No database seeding or external API keys are required to use the monitoring workspace.
 
-## Code of Conduct
+Start the application in one terminal:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```sh
+php artisan serve
+```
 
-## Security Vulnerabilities
+Start the frontend development server in a second terminal:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```sh
+npm run dev
+```
 
-## License
+Open the application address printed by `php artisan serve` and sign in using the demo account below. Keep both terminals running during development.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+For a local preview without the Vite development server, run `npm run build`, then start `php artisan serve`.
+
+### Laragon
+
+Point the Laragon virtual host at the project's `public` directory and set `APP_URL` in `.env` to the configured application address. Run `npm run dev` for development or `npm run build` to generate the assets served by Laravel.
+
+## Demo account
+
+| Field | Value |
+| --- | --- |
+| Username | `admin` |
+| Password | `admin123` |
+
+This shared account is defined in `app/Http/Controllers/LoginController.php`. It provides demonstration access; the sample roles in Administration are illustrative and do not enforce permissions.
+
+## Suggested walkthrough
+
+1. Sign in and explore the Coastal Industrial overview.
+2. Switch to River Catchment to compare a second area of interest.
+3. Filter methane, air quality, or water quality observations and compare baseline references.
+4. Select an October 2026 date range to view sample observations. September 2026 demonstrates the empty-data state.
+5. Open Alerts & Anomalies, select a finding, and save a review status and note.
+6. Export filtered observations from Environmental Monitoring or prepare a report from Reports & Insights.
+7. Adjust draft settings in Administration and sign out when finished.
+
+Reviews and draft settings belong to the current browser session and are cleared on sign-out. Threshold changes do not recalculate the fixed sample anomaly register.
+
+## Development commands
+
+```sh
+# Build frontend assets
+npm run build
+
+# Run the automated test suite
+php artisan test --compact
+
+# Run login or dashboard feature tests
+php artisan test --compact tests/Feature/LoginTest.php
+php artisan test --compact tests/Feature/MonitoringDashboardTest.php
+
+# Inspect application routes
+php artisan route:list --except-vendor
+```
+
+The test configuration uses an in-memory SQLite database and array-backed sessions and cache.
+
+## Project structure
+
+| Location | Purpose |
+| --- | --- |
+| `app/Http/Controllers/MonitoringController.php` | Demo observations, filtering, anomaly reviews, settings, CSV exports, and report data. |
+| `app/Http/Controllers/LoginController.php` | Shared demo login and logout. |
+| `app/Http/Middleware/EnsureDemoAuthenticated.php` | Session checks for workspace access. |
+| `resources/views/iems/` | Dashboard screens and report templates. |
+| `resources/views/components/` | Shared interface components. |
+| `resources/css/` and `resources/js/` | Application styles and browser interactions. |
+| `public/images/map/` | Bundled demonstration map imagery. |
+| `routes/web.php` | Workspace, login, export, and report routes. |
+| `tests/Feature/` | Login and monitoring workflow coverage. |
+
+## Troubleshooting
+
+- **Missing Vite manifest or unstyled pages:** run `npm run build`, or keep `npm run dev` running during development.
+- **Missing database or session tables:** confirm PDO SQLite is enabled, create `database/database.sqlite` using the installation command, and run `php artisan migrate --no-interaction`.
+- **Missing application key:** run `php artisan key:generate --no-interaction`.
+- **Environment changes are not reflected:** run `php artisan config:clear`.
+
+Local environment files, SQLite databases, installed dependencies, and generated frontend assets are excluded from Git.
+
+## Demonstration scope
+
+All observations, AOI boundaries, thresholds, and findings are illustrative. Satellite source labels describe the intended monitoring context; the displayed values are generated by the application. Reports and exports contain demonstration data. Production authentication, persistent monitoring records, live ingestion, and operational integrations require further implementation.
