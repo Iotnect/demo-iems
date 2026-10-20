@@ -1,0 +1,731 @@
+/* Shared soft surfaces for the application; report documents retain their paper layout. */
+body:has(.app-shell) {
+    --brand: #008674;
+    --ink: #2b4850;
+    --muted: #6b8086;
+    --line: #d5dfe1;
+    --neu-surface: #e8eef0;
+    --neu-light: #ffffff;
+    --neu-dark: #c7d2d6;
+    --neu-face: linear-gradient(145deg, #eef3f5, #e3e9ec);
+    --neu-raised: 8px 8px 18px #c8d3d7, -8px -8px 18px #ffffff;
+    --neu-small: 4px 4px 9px #c7d2d6, -4px -4px 9px #ffffff;
+    --neu-inset: inset 4px 4px 8px #cbd6d9, inset -4px -4px 8px #ffffff;
+    background: var(--neu-surface);
+    color: var(--ink);
+}
+
+.app-shell .sidebar {
+    background: var(--neu-surface);
+    border-right: 1px solid #f5f9fa;
+    box-shadow: 6px 0 18px #c5d0d44d;
+}
+
+.app-shell .brand-mark {
+    border-radius: 14px;
+    background: linear-gradient(145deg, #139d89, #007866);
+    border: 1px solid #ffffff45;
+    box-shadow: 4px 4px 9px #bdccce, -4px -4px 9px #ffffff;
+}
+
+.app-shell .brand b {
+    color: #294b53;
+    text-shadow: 1px 1px 0 #ffffff;
+}
+
+.app-shell .nav-link {
+    border: 1px solid transparent;
+    border-radius: 12px;
+    color: #617980;
+    transition: color .18s, background .18s, box-shadow .18s;
+}
+
+.app-shell .nav-link:hover {
+    background: var(--neu-face);
+    box-shadow: var(--neu-small);
+    color: #007c69;
+}
+
+.app-shell .nav-link.active {
+    color: #007e6b;
+    background: var(--neu-surface);
+    border-color: #dae5e6;
+    box-shadow: var(--neu-inset);
+}
+
+.app-shell .nav-link.active::before {
+    height: 21px;
+    width: 3px;
+    background: #159c84;
+    box-shadow: 1px 0 4px #159c8433;
+}
+
+.app-shell .nav-count,
+.app-shell .count-bubble {
+    border-radius: 6px;
+    border: 1px solid #f8fbfc;
+    box-shadow: 2px 2px 4px #c9d4d8, -2px -2px 4px #ffffff;
+}
+
+.app-shell .nav-count {
+    background: #ede9df;
+    color: #8d641c;
+}
+
+.app-shell .count-bubble {
+    background: var(--neu-surface);
+    color: #627b76;
+}
+
+.app-shell .nav-divider,
+.app-shell .form-divider {
+    background: #d4dfe1;
+    box-shadow: 0 1px 0 #ffffff;
+}
+
+.app-shell .sidebar-footer {
+    border-color: #d5dfe1;
+    box-shadow: inset 0 1px 0 #ffffff;
+    color: #6f8584;
+}
+
+.app-shell .poc-card {
+    background: var(--neu-face);
+    border: 1px solid #f5faf9;
+    border-radius: 16px;
+    box-shadow: var(--neu-small);
+}
+
+.app-shell .poc-orbit {
+    opacity: .35;
+}
+
+.app-shell .help-button {
+    color: #677f83;
+}
+
+.app-shell .topbar {
+    position: relative;
+    background: var(--neu-surface);
+    border-bottom: 1px solid #f5f9fa;
+    box-shadow: 0 5px 12px #c7d2d63d;
+}
+
+.app-shell .topbar-divider {
+    background: #cfdadd;
+    box-shadow: 1px 0 0 #ffffff;
+}
+
+.app-shell .demo-badge {
+    background: #eeede6;
+    color: #826b37;
+    border: 1px solid #faf9f2;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px #c9d3d4, -2px -2px 5px #ffffff;
+}
+
+.app-shell .icon-button,
+.app-shell .avatar {
+    background: var(--neu-face);
+    border: 1px solid #f7fbfc;
+    box-shadow: 3px 3px 7px #c6d2d6, -3px -3px 7px #ffffff;
+    color: #5c7e7a;
+}
+
+.app-shell .icon-button {
+    border-radius: 9px;
+}
+
+.app-shell .icon-button:hover,
+.app-shell .icon-button:active {
+    background: var(--neu-surface);
+    box-shadow: var(--neu-inset);
+    color: #007e6b;
+}
+
+.app-shell .profile-button {
+    border-radius: 12px;
+}
+
+.app-shell .panel {
+    background: var(--neu-face);
+    border: 1px solid #f6fafbcc;
+    border-radius: 18px;
+    box-shadow: var(--neu-raised);
+}
+
+.app-shell .metrics-grid,
+.app-shell .monitoring-metrics-grid,
+.app-shell .alert-count-grid {
+    gap: 20px;
+}
+
+.app-shell .metric-card {
+    border-radius: 17px;
+}
+
+.app-shell .metric-card:hover {
+    border-color: #ffffff;
+    background: linear-gradient(145deg, #f1f6f7, #e5edef);
+    box-shadow: 10px 10px 21px #c3d0d4, -10px -10px 21px #ffffff;
+    transform: translateY(-2px);
+}
+
+.app-shell .metric-card:active {
+    background: var(--neu-surface);
+    box-shadow: var(--neu-inset);
+    transform: translateY(0);
+}
+
+.app-shell .metric-icon {
+    border-radius: 10px;
+    border: 1px solid #ffffffb3;
+    box-shadow: 3px 3px 7px #c8d4d7, -3px -3px 7px #ffffff;
+}
+
+.app-shell .metric-icon.teal {
+    background: linear-gradient(145deg, #e4f0eb, #dbe8e5);
+    color: #12836c;
+}
+
+.app-shell .metric-icon.blue {
+    background: linear-gradient(145deg, #e6eef6, #dce6ef);
+    color: #527fa7;
+}
+
+.app-shell .metric-icon.cyan {
+    background: linear-gradient(145deg, #e1f0f1, #d8e9ea);
+    color: #348e98;
+}
+
+.app-shell .metric-icon.amber {
+    background: linear-gradient(145deg, #f3eddf, #e9e2d6);
+    color: #aa7e2f;
+}
+
+.app-shell .metric-value {
+    color: #2f5559;
+    text-shadow: 1px 1px 0 #ffffff;
+}
+
+.app-shell .metric-bottom,
+.app-shell .panel-header,
+.app-shell .map-legend,
+.app-shell .map-acquisition,
+.app-shell .table-footer,
+.app-shell .detail-values,
+.app-shell .review-history {
+    border-color: #d4dfe1;
+}
+
+.app-shell .metric-bottom {
+    background: #e3eaed80;
+    box-shadow: inset 0 1px 0 #ffffff9c;
+}
+
+.app-shell .panel-header {
+    background: transparent;
+    box-shadow: 0 1px 0 #ffffff80;
+}
+
+.app-shell .filterbar {
+    background: var(--neu-surface);
+    border: 1px solid #edf4f5;
+    border-radius: 16px;
+    box-shadow: var(--neu-inset);
+}
+
+.app-shell .filter-field {
+    border-color: #cedbde;
+}
+
+.app-shell .filter-field select {
+    background: transparent;
+    color: #3f6269;
+}
+
+.app-shell .filter-field label {
+    color: #6b858c;
+}
+
+.app-shell .filter-reset {
+    color: #537d76;
+}
+
+.app-shell .button,
+.app-shell .layers-button {
+    background: var(--neu-face);
+    border: 1px solid #f8fcfc;
+    border-radius: 10px;
+    color: #4b706e;
+    box-shadow: var(--neu-small);
+    transition: background .18s, box-shadow .18s, color .18s;
+}
+
+.app-shell .button:hover,
+.app-shell .layers-button:hover {
+    border-color: #ffffff;
+    color: #007b68;
+    box-shadow: 5px 5px 11px #c2d0d3, -5px -5px 11px #ffffff;
+}
+
+.app-shell .button:active,
+.app-shell .layers-button:active {
+    background: var(--neu-surface);
+    box-shadow: var(--neu-inset);
+}
+
+.app-shell .button-primary {
+    color: #ffffff;
+    background: linear-gradient(145deg, #119d87, #007e6b);
+    border-color: #ffffff40;
+    box-shadow: 4px 4px 10px #b6cbcc, -4px -4px 10px #ffffff;
+    text-shadow: 0 1px 1px #004f4640;
+}
+
+.app-shell .button-primary:hover {
+    color: #ffffff;
+    border-color: #ffffff60;
+    background: linear-gradient(145deg, #0c937e, #00705e);
+    box-shadow: 5px 5px 11px #b1c8c9, -5px -5px 11px #ffffff;
+}
+
+.app-shell .button-primary:active {
+    box-shadow: inset 3px 3px 7px #005e51, inset -3px -3px 7px #27ad98;
+}
+
+.app-shell .status-summary-icon {
+    background: #eee9de;
+    border: 1px solid #fbf9f1;
+    box-shadow: 3px 3px 7px #c6d2d4, -3px -3px 7px #ffffff;
+    color: #9b772e;
+}
+
+.app-shell .status-summary-icon.good {
+    background: #dfede6;
+    color: #168467;
+}
+
+.app-shell .badge {
+    background: #e0e8ea;
+    border: 1px solid #f5faf9;
+    border-radius: 7px;
+    color: #60747b;
+    box-shadow: 2px 2px 4px #cbd6d8, -2px -2px 4px #faffff;
+}
+
+.app-shell .badge-green {
+    background: #deede5;
+    color: #267453;
+}
+
+.app-shell .badge-amber {
+    background: #f0e8d8;
+    color: #93651e;
+}
+
+.app-shell .badge-red {
+    background: #f0e1dd;
+    color: #ad5141;
+}
+
+.app-shell .badge-blue {
+    background: #dfe9f1;
+    color: #466d94;
+}
+
+.app-shell .monitor-map {
+    margin: 12px 12px 0;
+    border: 4px solid var(--neu-surface);
+    border-radius: 15px;
+    box-shadow: var(--neu-inset), 1px 1px 1px #ffffff;
+    isolation: isolate;
+}
+
+.app-shell .map-canvas image {
+    filter: saturate(.58) contrast(.94) brightness(1.02);
+}
+
+.app-shell .map-selection,
+.app-shell .map-location,
+.app-shell .map-tools,
+.app-shell .layer-options {
+    background: #eaf0f2f5;
+    border: 1px solid #ffffffd9;
+    border-radius: 11px;
+    box-shadow: 4px 4px 11px #829b9a42, -3px -3px 9px #ffffffa6;
+}
+
+.app-shell .map-selection > a {
+    border-color: #d0dfe0;
+    background: #dfeae899;
+    border-radius: 0 0 11px 11px;
+    color: #2a7766;
+}
+
+.app-shell .map-tools button + button {
+    border-color: #d4dfe0;
+}
+
+.app-shell .map-tools button:hover {
+    background: #dce8e7;
+    box-shadow: inset 2px 2px 4px #c5d4d3, inset -2px -2px 4px #ffffff;
+}
+
+.app-shell .map-legend,
+.app-shell .map-acquisition {
+    border-top: 0;
+}
+
+.app-shell .map-acquisition {
+    border-radius: 0 0 18px 18px;
+    background: #e0e9ec66;
+}
+
+.app-shell .recent-alert {
+    border-color: #d5dfe1;
+    box-shadow: inset 0 1px 0 #ffffff8c;
+}
+
+.app-shell .recent-alert:hover,
+.app-shell .aoi-observation:hover {
+    background: #dfe9e8;
+}
+
+.app-shell .alert-symbol {
+    border: 1px solid #ffffffb3;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px #cbd5d7, -2px -2px 5px #ffffff;
+}
+
+.app-shell .alert-symbol.high {
+    background: #eee0dc;
+    color: #ae5a47;
+}
+
+.app-shell .alert-symbol.medium {
+    background: #eee6d8;
+    color: #a17c35;
+}
+
+.app-shell .alert-symbol.low {
+    background: #e0eaed;
+    color: #4d8797;
+}
+
+.app-shell .panel-note,
+.app-shell .coverage-note,
+.app-shell .findings-footer {
+    background: #e0e9ec80;
+    border-color: #d3dfe0;
+    border-radius: 0 0 18px 18px;
+    color: #71858a;
+}
+
+.app-shell .findings-footer {
+    color: #337968;
+}
+
+.app-shell .progress-track {
+    height: 7px;
+    background: #e0e8ea;
+    border-radius: 8px;
+    box-shadow: inset 2px 2px 4px #bdcdd0, inset -2px -2px 4px #ffffff;
+}
+
+.app-shell .progress-track > span {
+    background: linear-gradient(90deg, #369b83, #67b69f);
+    border: 1px solid #ffffff4d;
+    box-shadow: 1px 1px 3px #739b8f55;
+}
+
+.app-shell .chart-tabs > button,
+.app-shell .page-tabs > a {
+    border-radius: 9px;
+    color: #70858a;
+    transition: box-shadow .18s, color .18s;
+}
+
+.app-shell .chart-tabs > button.active {
+    color: #087965;
+    background: var(--neu-surface);
+    box-shadow: inset 3px 3px 6px #c6d3d6, inset -3px -3px 6px #ffffff;
+}
+
+.app-shell .page-tabs > a.active {
+    color: #087965;
+    background: var(--neu-surface);
+    box-shadow: var(--neu-inset);
+    border-bottom-color: transparent;
+    padding-inline: 14px;
+}
+
+.app-shell .page-tabs {
+    padding-bottom: 8px;
+    border-color: #d0dcde;
+    box-shadow: 0 1px 0 #ffffff;
+}
+
+.app-shell .trend-chart svg line {
+    stroke: #c9d6d9;
+}
+
+.app-shell .trend-chart svg > rect {
+    fill: #dce5e7;
+}
+
+.app-shell .trend-chart svg text {
+    fill: #71868d;
+}
+
+.app-shell .chart-tooltip {
+    color: #2a6d5d;
+    background: #edf3f4;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    box-shadow: 3px 3px 8px #b5c8ca;
+}
+
+.app-shell .quick-actions,
+.app-shell .baseline-banner,
+.app-shell .evaluation-banner {
+    background: var(--neu-face);
+    border: 1px solid #f8fcfc;
+    border-radius: 18px;
+    box-shadow: var(--neu-raised);
+}
+
+.app-shell .quick-actions {
+    padding-block: 18px;
+}
+
+.app-shell .quick-actions > a {
+    color: #52776b;
+}
+
+.app-shell .notice {
+    border-radius: 12px;
+    border-color: #f4f8f7;
+    box-shadow: inset 2px 2px 5px #cdd9da, inset -2px -2px 5px #ffffff;
+}
+
+.app-shell .notice-neutral {
+    background: #e0e9e9;
+    color: #5a7c76;
+}
+
+.app-shell .severity-count.selected,
+.app-shell .severity-count:hover,
+.app-shell .aoi-card.selected {
+    background: var(--neu-surface);
+    border-color: #d3e1df;
+    box-shadow: var(--neu-inset);
+}
+
+.app-shell .severity-count.selected > span,
+.app-shell .aoi-card.selected strong {
+    color: #117c66;
+}
+
+.app-shell .search-input,
+.app-shell .anomaly-filters select,
+.app-shell .form-stack select,
+.app-shell .form-stack input,
+.app-shell .form-stack textarea,
+.app-shell .baseline-range select {
+    background: var(--neu-surface);
+    border: 1px solid #f5fafb;
+    border-radius: 10px;
+    box-shadow: var(--neu-inset);
+    color: #46656b;
+}
+
+.app-shell .search-input input {
+    color: #46656b;
+}
+
+.app-shell th {
+    background: #dde7ea80;
+    color: #637f87;
+    border-color: #d0dde0;
+}
+
+.app-shell td,
+.app-shell .aoi-observation,
+.app-shell .criteria-row,
+.app-shell .source-status-row {
+    border-color: #d5e0e1;
+    color: #607a7f;
+}
+
+.app-shell .selected-row {
+    background: #dce9e4;
+    box-shadow: inset 3px 0 0 #359980;
+}
+
+.app-shell .review-status,
+.app-shell .data-type {
+    background: #e2e9ec;
+    border-color: #ffffff;
+    border-radius: 7px;
+    color: #597479;
+    box-shadow: 2px 2px 4px #c6d2d5, -2px -2px 4px #faffff;
+}
+
+.app-shell .table-footer {
+    background: #e0e9ec80;
+    border-radius: 0 0 18px 18px;
+    color: #738a90;
+}
+
+.app-shell .report-library-item {
+    border-top-color: #d7e0e0;
+}
+
+.app-shell .report-library-item.selected {
+    background: #e0eae6;
+    box-shadow: inset 3px 3px 7px #cad8d3, inset -3px -3px 7px #f7fffc;
+}
+
+.app-shell .report-file-icon {
+    background: var(--neu-face);
+    border-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: var(--neu-small);
+    color: #65927c;
+}
+
+.app-shell .report-preview-panel {
+    background: var(--neu-surface);
+}
+
+.app-shell .report-paper {
+    border-radius: 5px;
+    border-color: #ffffff;
+    box-shadow: 5px 5px 14px #c1d0d3, -5px -5px 14px #ffffff;
+}
+
+.app-shell .roadmap-step.current {
+    background: #dfeae5;
+    box-shadow: inset 3px 3px 7px #cbd9d3, inset -3px -3px 7px #f9fffc;
+}
+
+.app-shell .roadmap-step {
+    border-color: #d4e0df;
+}
+
+.app-shell .main-footer {
+    border-color: #cfdbde;
+    box-shadow: inset 0 1px 0 #ffffff;
+    color: #778d92;
+}
+
+.app-shell .page-heading p,
+.app-shell .panel-header p,
+.app-shell .metric-descriptor,
+.app-shell .metric-bottom,
+.app-shell .metric-value > span,
+.app-shell .metric-change > span:last-of-type,
+.app-shell .status-summary p > span,
+.app-shell .recent-alert p,
+.app-shell .alert-meta,
+.app-shell .finding p,
+.app-shell .text-panel > p,
+.app-shell .detail-text p,
+.app-shell .chart-unit,
+.app-shell .chart-legend,
+.app-shell .coverage-head,
+.app-shell .coverage-source > span:first-child,
+.app-shell .map-acquisition {
+    color: #6c8289;
+}
+
+.app-shell .page-eyebrow,
+.app-shell .last-updated,
+.app-shell .nav-section-label,
+.app-shell .section-label,
+.app-shell .eyebrow {
+    color: #7a9095;
+}
+
+body:has(.app-shell) .app-dialog,
+.app-shell .notification-popover {
+    background: var(--neu-surface);
+    border: 1px solid #f6fcfc;
+    border-radius: 22px;
+    box-shadow: 12px 12px 32px #9eafb580, -8px -8px 24px #ffffff99;
+}
+
+body:has(.app-shell) .app-dialog::backdrop {
+    background: #29464f66;
+    backdrop-filter: blur(6px);
+}
+
+body:has(.app-shell) .app-dialog .icon-button,
+body:has(.app-shell) .app-dialog .button,
+body:has(.app-shell) .app-dialog .large-dialog-icon {
+    border-radius: 10px;
+    background: var(--neu-face);
+    border: 1px solid #ffffff;
+    box-shadow: var(--neu-small);
+}
+
+body:has(.app-shell) .app-dialog .button-primary {
+    background: linear-gradient(145deg, #119d87, #007e6b);
+    color: #ffffff;
+    border-color: #ffffff40;
+}
+
+body:has(.app-shell) .app-dialog :is(input, select, textarea) {
+    background: var(--neu-surface);
+    border: 1px solid #f6fcfc;
+    border-radius: 10px;
+    color: #46656b;
+    box-shadow: var(--neu-inset);
+}
+
+body:has(.app-shell) :focus-visible {
+    outline: 2px solid #007d6a;
+    outline-offset: 4px;
+}
+
+@media (max-width: 760px) {
+    .app-shell .metrics-grid,
+    .app-shell .monitoring-metrics-grid,
+    .app-shell .alert-count-grid {
+        gap: 14px;
+    }
+
+    .app-shell .panel {
+        border-radius: 15px;
+        box-shadow: 5px 5px 12px #c8d3d7, -5px -5px 12px #ffffff;
+    }
+
+    .app-shell .monitor-map {
+        margin: 9px 9px 0;
+        border-width: 3px;
+    }
+
+    .app-shell .page-tabs > a.active {
+        padding-inline: 8px;
+    }
+}
+
+@media (prefers-contrast: more) {
+    .app-shell :is(.panel, .button, .filterbar, .nav-link.active),
+    body:has(.app-shell) .app-dialog :is(input, select, textarea) {
+        border-color: #8a9ea4;
+    }
+}
+
+@media print {
+    body:has(.app-shell) {
+        background: #ffffff;
+    }
+
+    .app-shell :is(.panel, .button, .filterbar, .sidebar, .topbar) {
+        background: #ffffff;
+        box-shadow: none;
+        border-color: #c9d5d9;
+    }
+}
