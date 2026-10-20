@@ -1,8 +1,8 @@
-@import 'tailwindcss';
+@import 'tailwindcss' source(none);
 @import './neumorphism.css';
 @import './login.css';
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
+@source '../views';
+@source '../js';
 @theme {
     --font-sans: 'Instrument Sans', 'Segoe UI', sans-serif;
     --color-brand: #008b79;
